@@ -1,0 +1,79 @@
+// Feito por Renan Sartori Barbosa no dia 29/04/2026
+ //versao 1.0
+ 
+ 
+ 
+ 
+ #include <stdio.h>
+ 
+ 
+ main() {
+		int opcao; 	
+ 		float num1,num2,resultado;
+ 	
+ 	printf("CALCULADORA");
+ 	printf("Selecione o calculo que voce quer fazer agora \n\t1-Divisao\n\t2-Multiplicacao\n\t3-Soma\n\t4-Subtracao\n\t5-Quadrado\n\t6-Numero ao cubo\n\t");
+ 	scanf("%d", &opcao);
+	
+ 	
+ 	switch(opcao)
+	  {
+ 		
+ 		case 1: //divisao
+ 			printf("digite o primeiro numero:");
+			scanf("%f", &num1);
+			printf("digite o segundo numero:");
+			scanf("%f", &num2);
+			resultado = num1 / num2;
+			printf ("O seu resultado eh: %2.f", resultado);
+ 		break;
+ 		
+ 		case 2: // multiplicacao
+ 			printf("digite o primeiro numero:");
+			scanf("%f", &num1);
+			printf("digite o segundo numero:");
+			scanf("%f", &num2);
+			resultado = num1 * num2;
+			printf ("O seu resultado eh: %2.f", resultado);
+ 		break;
+ 		
+ 		case 3: // soma
+ 			printf("digite o primeiro numero:");
+			scanf("%f", &num1);
+			printf("digite o segundo numero:");
+			scanf("%f", &num2); 
+			resultado = num1 + num2;
+			printf ("O seu resultado eh: %2.f", resultado);
+ 		break;		
+ 			
+ 		case 4: // subtracao
+ 			printf("digite o primeiro numero:");
+			scanf("%f", &num1);
+			printf("digite o segundo numero:");
+			scanf("%f", &num2); 
+			resultado = num1 / num2;
+			printf ("O seu resultado eh: %2.f", resultado);	
+ 		break;		
+ 			
+ 		case 5:  //Quadrado do num
+ 			printf("digite o primeiro numero:");
+			scanf("%f", &num1);
+			printf("digite o segundo numero:");
+			scanf("%f", &num2);
+			resultado = num1 * num1;
+			printf ("O seu resultado eh: %2.f", resultado);
+ 		break;
+ 		
+ 		case 6: //Cubo do numero
+ 			printf("digite o primeiro numero:");
+			scanf("%f", &num1);
+			printf("digite o segundo numero:");
+			scanf("%f", &num2); 
+			resultado = num1 * num1 * num1;
+			printf ("O seu resultado eh: %2.f", resultado);
+ 		break;	
+ 		
+ 	}
+ }
+ 	
+
