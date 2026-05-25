@@ -1,0 +1,208 @@
+
+
+
+/*
+ * Autor:   Renan Sartori Barbosa
+ * Data:    15/04/2025
+ * Versao:  1.0
+ * Descricao: Programa de enquete de conhecimento (Teste de QI)
+ *            com 8 perguntas de multipla escolha, protecao por senha,
+ *            calculo de nota (0 a 100) e ranking de conhecimento.
+ */
+
+#include <stdio.h>
+#include <string.h>
+//senha iq2025
+
+int main() {
+
+    /* --- Variaveis --- */
+    char senha[50];
+    int tentativas;
+    int r1, r2, r3, r4, r5, r6, r7, r8;
+    int acertos;
+    int nota;
+
+    /* ========================================
+       TELA DE BOAS-VINDAS
+       ======================================== */
+    printf("============================================\n");
+    printf("     TESTE DE QI - CONHECIMENTO GERAL       \n");
+    printf("============================================\n\n");
+
+    /* ========================================
+       PROTECAO POR SENHA (ate 3 tentativas)
+       ======================================== */
+    printf("Este programa e protegido por senha.\n");
+
+    tentativas = 0;
+
+    while (tentativas < 3) {
+        printf("Digite a senha: ");
+        scanf("%s", senha);
+        tentativas = tentativas + 1;
+
+        if (strcmp(senha, "iq2025") == 0) {
+            printf("\nSenha correta! Bem-vindo ao teste.\n\n");
+            tentativas = 10;
+        } else {
+            if (tentativas < 3) {
+                printf("Senha incorreta. Tentativas restantes: %d\n", 3 - tentativas);
+            } else {
+                printf("\nNumero maximo de tentativas atingido. Encerrando.\n");
+                return 1;
+            }
+        }
+    }
+
+    /* ========================================
+       INSTRUCOES
+       ======================================== */
+    printf("--------------------------------------------\n");
+    printf("INSTRUCOES:\n");
+    printf("  Responda cada pergunta digitando o numero\n");
+    printf("  da alternativa (1 a 5) e pressione ENTER.\n");
+    printf("--------------------------------------------\n\n");
+
+    /* Pergunta 1 */
+    printf("Pergunta 1: Qual e a capital do Brasil?\n");
+    printf("  1) Sao Paulo\n");
+    printf("  2) Rio de Janeiro\n");
+    printf("  3) Brasilia\n");
+    printf("  4) Salvador\n");
+    printf("  5) Belo Horizonte\n");
+    printf("Sua resposta: ");
+    scanf("%d", &r1);
+    printf("\n");
+
+    /* Pergunta 2 */
+    printf("Pergunta 2: Quanto e 15 x 15?\n");
+    printf("  1) 225\n");
+    printf("  2) 215\n");
+    printf("  3) 205\n");
+    printf("  4) 235\n");
+    printf("  5) 200\n");
+    printf("Sua resposta: ");
+    scanf("%d", &r2);
+    printf("\n");
+
+    /* Pergunta 3 */
+    printf("Pergunta 3: Qual planeta e o mais proximo do Sol?\n");
+    printf("  1) Venus\n");
+    printf("  2) Mercurio\n");
+    printf("  3) Marte\n");
+    printf("  4) Terra\n");
+    printf("  5) Jupiter\n");
+    printf("Sua resposta: ");
+    scanf("%d", &r3);
+    printf("\n");
+
+    /* Pergunta 4 */
+    printf("Pergunta 4: Quantos lados tem um heptagono?\n");
+    printf("  1) 5\n");
+    printf("  2) 6\n");
+    printf("  3) 8\n");
+    printf("  4) 7\n");
+    printf("  5) 9\n");
+    printf("Sua resposta: ");
+    scanf("%d", &r4);
+    printf("\n");
+
+    /* Pergunta 5 */
+    printf("Pergunta 5: Qual e o simbolo quimico do ouro?\n");
+    printf("  1) Au\n");
+    printf("  2) Ag\n");
+    printf("  3) Fe\n");
+    printf("  4) Cu\n");
+    printf("  5) Pb\n");
+    printf("Sua resposta: ");
+    scanf("%d", &r5);
+    printf("\n");
+
+    /* Pergunta 6 */
+    printf("Pergunta 6: Quem escreveu 'Dom Casmurro'?\n");
+    printf("  1) Jose de Alencar\n");
+    printf("  2) Carlos Drummond\n");
+    printf("  3) Machado de Assis\n");
+    printf("  4) Clarice Lispector\n");
+    printf("  5) Guimaraes Rosa\n");
+    printf("Sua resposta: ");
+    scanf("%d", &r6);
+    printf("\n");
+
+    /* Pergunta 7 */
+    printf("Pergunta 7: Em que ano o homem pisou na Lua?\n");
+    printf("  1) 1965\n");
+    printf("  2) 1969\n");
+    printf("  3) 1972\n");
+    printf("  4) 1975\n");
+    printf("  5) 1961\n");
+    printf("Sua resposta: ");
+    scanf("%d", &r7);
+    printf("\n");
+
+    /* Pergunta 8 */
+    printf("Pergunta 8: Qual e o maior oceano do mundo?\n");
+    printf("  1) Atlantico\n");
+    printf("  2) Indico\n");
+    printf("  3) Artico\n");
+    printf("  4) Pacifico\n");
+    printf("  5) Antarctico\n");
+    printf("Sua resposta: ");
+    scanf("%d", &r8);
+    printf("\n");
+
+    /* ========================================
+       CORRECAO
+       Gabaritos: Q1=3 Q2=1 Q3=2 Q4=4 Q5=1 Q6=3 Q7=2 Q8=4
+       ======================================== */
+    acertos = 0;
+
+    if (r1 == 3) acertos = acertos + 1;
+    if (r2 == 1) acertos = acertos + 1;
+    if (r3 == 2) acertos = acertos + 1;
+    if (r4 == 4) acertos = acertos + 1;
+    if (r5 == 1) acertos = acertos + 1;
+    if (r6 == 3) acertos = acertos + 1;
+    if (r7 == 2) acertos = acertos + 1;
+    if (r8 == 4) acertos = acertos + 1;
+
+    /* Cada questao vale 12 pontos; 8 acertos = 100 */
+    nota = acertos * 12;
+    if (acertos == 8) {
+        nota = 100;
+    }
+
+    /* ========================================
+       RESULTADO
+       ======================================== */
+    printf("============================================\n");
+    printf("             RESULTADO FINAL                \n");
+    printf("============================================\n");
+    printf("  Acertos : %d de 8\n", acertos);
+    printf("  Nota    : %d / 100\n", nota);
+    printf("--------------------------------------------\n");
+    printf("  Ranking : ");
+
+    if (nota == 100) {
+        printf("GENIO - Conhecimento excepcional!\n");
+    } else if (nota >= 88) {
+        printf("SUPERDOTADO - Muito acima da media!\n");
+    } else if (nota >= 75) {
+        printf("ACIMA DA MEDIA - Excelente desempenho!\n");
+    } else if (nota >= 60) {
+        printf("MEDIA SUPERIOR - Bom conhecimento!\n");
+    } else if (nota >= 48) {
+        printf("MEDIA - Conhecimento razoavel.\n");
+    } else if (nota >= 36) {
+        printf("ABAIXO DA MEDIA - Precisa estudar mais.\n");
+    } else if (nota >= 24) {
+        printf("FRACO - Conhecimento limitado.\n");
+    } else {
+        printf("MUITO FRACO - Continue se dedicando!\n");
+    }
+
+    printf("============================================\n\n");
+    printf("Obrigado por participar!\n");
+
+}
