@@ -1,0 +1,63 @@
+
+#include <stdio.h>
+
+// Algoritmo de Zeller para calcular o dia da semana
+int diaDaSemana(int dia, int mes, int ano) {
+    if (mes < 3) {
+        mes += 12;
+        ano--;
+    }
+
+    int k = ano % 100;
+    int j = ano / 100;
+
+    int h = (dia + (13 * (mes + 1)) / 5 + k + k / 4 + j / 4 - 2 * j) % 7;
+
+    // Ajuste para que 0 = Domingo, 1 = Segunda, ..., 6 = Sábado
+    return ((h + 5) % 7);
+}
+
+int main() {
+    int dia, mes, ano;
+
+    printf("=== Descobra o dia em que voce nasceu ===\n\n");
+    printf("Digite sua data de nascimento:\n");
+
+    printf("Dia   : ");
+    scanf("%d", &dia);
+
+    printf("Mes   : ");
+    scanf("%d", &mes);
+
+    printf("Ano   : ");
+    scanf("%d", &ano);
+
+    // Validação básica
+    if (dia < 1 || dia > 31 || mes < 1 || mes > 12 || ano < 1) {
+        printf("\nData invalida! Por favor, verifique os valores.\n");
+        return 1;
+    }
+
+    const char *dias[] = {
+        "Domingo",
+        "Segunda-feira",
+        "Terça-feira",
+        "Quarta-feira",
+        "Quinta-feira",
+        "Sexta-feira",
+        "Sábado"
+    };
+
+    const char *meses[] = {
+        "", "Janeiro", "Fevereiro", "Março", "Abril",
+        "Maio", "Junho", "Julho", "Agosto",
+        "Setembro", "Outubro", "Novembro", "Dezembro"
+    };
+
+    int resultado = diaDaSemana(dia, mes, ano);
+
+    printf("\n?? Voce nasceu em: %d de %s de %d\n", dia, meses[mes], ano);
+    printf("?? O dia foi uma: %s\n\n", dias[resultado]);
+
+    return 0;
+}
