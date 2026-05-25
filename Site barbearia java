@@ -1,0 +1,106 @@
+import static spark.Spark.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        // Porta do servidor
+        port(4567);
+
+        // Rota principal
+        get("/", (req, res) -> {
+            res.type("application/json");
+
+            return """
+                    {
+                        "mensagem": "Bem-vindo à Barbearia Elite"
+                    }
+                    """;
+        });
+
+        // Listar serviços
+        get("/servicos", (req, res) -> {
+            res.type("application/json");
+
+            return """
+                    [
+                        {
+                            "id": 1,
+                            "nome": "Corte Masculino",
+                            "preco": 40
+                        },
+                        {
+                            "id": 2,
+                            "nome": "Barba",
+                            "preco": 25
+                        },
+                        {
+                            "id": 3,
+                            "nome": "Corte + Barba",
+                            "preco": 60
+                        }
+                    ]
+                    """;
+        });
+
+        // Buscar barbeiro
+        get("/barbeiro/:id", (req, res) -> {
+
+            String id = req.params(":id");
+
+            res.type("application/json");
+
+            return """
+                    {
+                        "id": "%s",
+                        "nome": "João",
+                        "especialidade": "Fade e Navalhado"
+                    }
+                    """.formatted(id);
+        });
+
+        // Criar agendamento
+        post("/agendamento", (req, res) -> {
+
+            String body = req.body();
+
+            res.status(201);
+            res.type("application/json");
+
+            return """
+                    {
+                        "mensagem": "Agendamento criado com sucesso",
+                        "dados": %s
+                    }
+                    """.formatted(body);
+        });
+
+        // Atualizar agendamento
+        put("/agendamento/:id", (req, res) -> {
+
+            String id = req.params(":id");
+
+            res.type("application/json");
+
+            return """
+                    {
+                        "mensagem": "Agendamento %s atualizado"
+                    }
+                    """.formatted(id);
+        });
+
+        // Deletar agendamento
+        delete("/agendamento/:id", (req, res) -> {
+
+            String id = req.params(":id");
+
+            res.type("application/json");
+
+            return """
+                    {
+                        "mensagem": "Agendamento %s removido"
+                    }
+                    """.formatted(id);
+        });
+    }
+}
