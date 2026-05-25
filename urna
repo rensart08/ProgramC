@@ -1,0 +1,50 @@
+urna eleitoral:
+
+
+#include <stdio.h>
+
+main() {
+	
+	int num,senha;
+	
+	printf("Digite a senha para fazer a votacao:");
+	scanf("%d",&senha);
+	
+	
+	if (senha == 1234)
+	{
+		printf("\n acesso liberado");
+	}
+	else {
+		printf("\n senha incorreta, acesso negado");
+	}
+	
+		
+	// urna eleitoral
+	printf("\n Urna para escolha do lider da turma ");
+	printf("\n Escolha em quem votar: \n 2-sarah\n3-Renan\n4-Rafael\n5-Lucas\n6-Sergio");
+	
+	scanf("%d", &num);
+	
+	switch(num) 	
+	{
+		case 2:
+			printf("\nVoce votou em Sarah");
+			break;
+		case 3:
+			printf("\nVoce votou em Renan");
+			break;
+		case 4:
+			printf("\nVoce votou em Rafael");
+			break;
+		case 5:
+			printf("\nVoce votou em Lucas");
+			break;
+		case 6:
+			printf("\nVoce votou em Sergio\n");
+			break;
+	
+		default: printf("\nNao votou em ninguem");
+	
+	}
+}
